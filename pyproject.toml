@@ -3,7 +3,7 @@ name = "capx"
 version = "0.1.0"
 description = "CaP-X: Code-as-Policies eXtended with RL for V(L)A code-as-action with simulators (LIBERO/robosuite/BEHAVIOR)."
 readme = "README.md"
-requires-python = ">=3.10, <3.13"
+requires-python = ">=3.10, <3.11"
 license = { text = "MIT" }
 authors = [
   { name = "CaP-X Authors" }

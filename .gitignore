@@ -27,6 +27,7 @@ checkpoints/
 libero_dataset/
 .cursor/
 
+logs/
 output/
 old_output/
 outputs/
