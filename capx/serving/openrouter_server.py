@@ -31,7 +31,8 @@ class Message(BaseModel):
 
 
 class ChatCompletionRequest(BaseModel):
-    model: str = "openrouter/google/gemini-2.5-pro-preview"
+    model: str = "nvidia/nemotron-3-ultra-550b-a55b:free"
+    # str = "openrouter/google/gemini-2.5-pro-preview" 
     messages: list[Message]
     temperature: float | None = 0.2
     max_tokens: int | None = 256

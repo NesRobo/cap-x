@@ -8,7 +8,8 @@ const FALLBACK_CONFIG = 'env_configs/cube_stack/franka_robosuite_cube_stack.yaml
 
 function App() {
   const trial = useTrialState();
-  const [model, setModel] = useState('google/gemini-3.1-pro-preview');
+  // const [model, setModel] = useState('google/gemini-3.1-pro-preview');
+  const [model, setModel] = useState('nvidia/nemotron-3-ultra-550b-a55b:free');
   const [serverUrl, setServerUrl] = useState('http://127.0.0.1:8110/chat/completions');
   const [temperature, setTemperature] = useState(1.0);
   const [awaitUserInput, setAwaitUserInput] = useState(true);
@@ -193,6 +194,9 @@ function App() {
                 <option value="deepseek/deepseek-r1-0528">DeepSeek R1</option>
                 <option value="qwen/qwen-235b-a22b">Qwen 235B</option>
                 <option value="moonshotai/kimi-k2-instruct">Kimi K2</option>
+              </optgroup>
+              <optgroup label="Free Models">
+                  <option value="c">Nemotron 3 Ultra (Free)</option>
               </optgroup>
             </select>
 
