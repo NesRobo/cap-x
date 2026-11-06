@@ -6,7 +6,7 @@
 	url = https://github.com/Max-Fu/verl.git
 [submodule "capx/third_party/robosuite"]
 	path = capx/third_party/robosuite
-	url = https://github.com/uynitsuj/robosuite
+	url = https://github.com/NesRobo/robosuite.git
 [submodule "capx/third_party/contact_graspnet_pytorch"]
 	path = capx/third_party/contact_graspnet_pytorch
 	url = https://github.com/uynitsuj/contact_graspnet_pytorch
@@ -23,4 +23,4 @@
 	url = https://github.com/NVlabs/curobo.git
 [submodule "capx/third_party/b1k"]
 	path = capx/third_party/b1k
-	url = https://github.com/qingh097/b1k.git
+	url = https://github.com/NesRobo/b1k.git
