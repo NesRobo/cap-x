@@ -52,6 +52,10 @@ RUN uv sync --frozen \
     --python 3.10.22 \
     --extra robosuite
 
+# 5b. Install robosuite_models manually (not declared in pyproject.toml / uv.lock)
+RUN uv pip install --python /workspace/cap-x/.venv/bin/python \
+    -e capx/third_party/robosuite/robosuite/robosuite_models   
+    
 # 6. Install LIBERO (Python 3.12) - In the capx original README Libero 
 # requires a separate environment 
 # install Robosuite first and make LIBERO installation

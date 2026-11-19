@@ -214,3 +214,54 @@ uv run --no-sync --active capx/envs/launch.py \
 ## License
 
 This project is released under the [MIT License](LICENSE).
+
+----
+
+# Capx Docker Container 
+### Docker (Robosuite only)
+
+A Docker setup is provided in [`Dockerfile`](Dockerfile) and [`docker-compose.yml`](docker-compose.yml).
+It builds an image based on CUDA 12.8 / Ubuntu 24.04 with `uv`, Python 3.10.22 and 3.12, and the Robosuite environment (`uv sync --extra robosuite`).
+
+**Requirements**
+- Docker with Compose v2 (`docker compose`)
+- An NVIDIA GPU, its driver and the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+
+> **Note:** The Dockerfile **clones** `https://github.com/NesRobo/cap-x.git` (with submodules) when the image is built.
+> LIBERO is not installed in the image (see step 6 in the Dockerfile).
+
+**Build the image**
+
+```bash
+# From the repository root
+docker compose build              # builds the image tagged capx:dev
+# Rebuild from scratch (for example, to pull the latest commit):
+docker compose build --no-cache
+```
+
+**Run the container**
+
+```bash
+docker compose run --rm capx      # opens an interactive bash shell in /workspace/cap-x
+                                  # Attention!: --rm deletes the container when it exits
+```
+
+Or keep it running in the background and attach to it:
+
+```bash
+docker compose up -d              # starts the container named capx-dev
+docker exec -it capx-dev bash     # opens a shell in it
+docker compose down               # stops and removes it
+```
+
+**Check the setup inside the container**
+
+```bash
+nvidia-smi                        # the GPU should be listed
+python -c "import robosuite; print(robosuite.__version__)"
+```
+
+The `.venv` with Robosuite is already on `PATH`, so the Quick Start commands below work as they are.
+The HuggingFace and uv caches are kept between runs in the named volumes `hf-cache` and `uv-cache`.
+For SAM3, run `huggingface-cli login` once inside the container. The token is stored in the persistent `hf-cache` volume.
+
