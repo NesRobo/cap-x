@@ -7,6 +7,7 @@
 [submodule "capx/third_party/robosuite"]
 	path = capx/third_party/robosuite
 	url = https://github.com/NesRobo/robosuite.git
+	branch = robosuite_dev
 [submodule "capx/third_party/contact_graspnet_pytorch"]
 	path = capx/third_party/contact_graspnet_pytorch
 	url = https://github.com/uynitsuj/contact_graspnet_pytorch
