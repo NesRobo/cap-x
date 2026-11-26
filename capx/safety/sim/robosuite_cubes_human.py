@@ -1,4 +1,4 @@
-"""Robosuite cube-stack scene with a static human proxy + speed & separation monitoring (SSM).
+"""Wrapper around capx/integrations/robosuite_cubes.py that adds a human proxy and SSM.
 
 - StackWithHuman: robosuite Stack task with a visual-only capsule ("human proxy") added to the world.
 - FrankaRobosuiteCubesHumanLowLevel: capx low-level env whose move_to_joints_blocking() limits

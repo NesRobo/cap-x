@@ -1,4 +1,4 @@
-"""PyRoKi server with collision-aware IK (obstacles optional).
+""" A Wrapper around capx/serving/launch_pyroki_server.py that adds collision-aware IK and motion planning.
 
 Reuses the robot loading and obstacle parsing of capx/serving/launch_pyroki_server.py
 and runs as a separate server (default port 8117), so the original server is unchanged.
@@ -107,11 +107,18 @@ def _warm_up() -> None:
 def main(
     robot: str = "panda_description",
     target_link: str = "panda_hand",
-    port: int = 8117,
+    port: int = 8117,  #run on a separte port from the pyroki original server (8116)
     host: str = "127.0.0.1",
 ):
-    lps.init_pyroki_server(robot_urdf_name=robot, target_link_name=target_link)  # loads robot once
-    _warm_up()
+    # loads robot once and keeps it in memory for all future requests
+    lps.init_pyroki_server(robot_urdf_name=robot, target_link_name=target_link)  
+    
+    # warm up JAX compilation for the first request moves that initial delay to startup 
+    # rather than making the first real client request unusually slow.
+    _warm_up() 
+
+    # run the HTTP server
+    # uvcorn listens to requested port and host, and forwards requests to FastAPI app
     uvicorn.run(app, host=host, port=port)
 
 

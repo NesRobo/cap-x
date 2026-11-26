@@ -33,7 +33,7 @@ def slerp_quaternions(
     Returns:
         Array of shape (num_steps, 4) with interpolated quaternions in wxyz format
     """
-    # scipy uses xyzw format, so convert
+    # PyRoKi uses quaternions as [w,x,y,z]; scipy uses [xyzw] format, so convert
     r_start = Rotation.from_quat([q_start[1], q_start[2], q_start[3], q_start[0]])
     r_end = Rotation.from_quat([q_end[1], q_end[2], q_end[3], q_end[0]])
 

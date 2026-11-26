@@ -1,4 +1,4 @@
-"""FrankaControlApi variant that is aware of the human (collision-aware IK + human queries)."""
+"""Wrapper around capx/integrations/franka/control.py that adds human-awareness (collision-aware IK + human queries)"""
 
 from __future__ import annotations
 
